@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {HorizontalBar} from 'react-chartjs-2';
 
-import {getNames, getGenders, getHighestNotes, getLowestNotes} from './chartActions';
+import {getNames, getGenders, getHighestNotes, getLowestNotes, addToChart, postChange, resetTrigger} from './chartActions';
 import {noteArray} from './noteArray';
 import './chart.css'
 
@@ -13,10 +13,24 @@ class ChartManager extends Component {
         this.state = {
             C4ID: 40,           // Position of C4 in noteArray
             chartData: {},
-            maleColor: 'rgb(0, 0, 255)',
-            femaleColor: 'rgb(255, 0, 0)',
+            triggerUpdate: false
         }
         this.toNote = this.toNote.bind(this);
+        this.setChartData = this.setChartData.bind(this);
+    }
+
+    componentDidUpdate() {
+        console.log(this.props.newTrigger);
+        if(this.state.triggerUpdate) {
+            this.setState({triggerUpdate: false}, function() {
+             this.setChartData();
+            })
+        }
+        else if(this.props.newTrigger) {
+            this.setState({triggerUpdate: true}, function() {
+                this.props.resetTrigger();
+            });
+        }
     }
 
     toNote = (noteID) => {
@@ -32,9 +46,25 @@ class ChartManager extends Component {
     }
 
     // Sets the chart data from the 4 arrays created
-    setChartData() {
+    setChartData = () => {
+        console.log("SET");
         this.setState({
             chartData: {
+                labels: ["hi", "ee"],
+                datasets: [
+                {
+                    label: 'Highest Note',
+                    data: [6, 8],
+                    backgroundColor: ["#FF0000", "#00FF00"]
+                },
+                {
+                    label: 'Lowest Note',
+                    data: [-6, -3],
+                    backgroundColor: ["#FF0000",  "#00FF00"]
+                }]
+
+                /*
+                chartData: {
                 labels: this.props.names,
                 datasets: [
                 {
@@ -47,21 +77,15 @@ class ChartManager extends Component {
                     data: this.props.lowestNotes,
                     backgroundColor: this.props.genders
                 }]
+                */
             }
         })
     }
 
-    testClick = () => {
-        this.props.getNames();
-        this.props.getGenders(this.state.maleColor, this.state.femaleColor);
-        this.props.getHighestNotes();
-        this.props.getLowestNotes();
-        this.setChartData();
-    }
-
     render() {
-       return (
-           <div className="chart" onClick={this.testClick}>
+
+        return (
+           <div className="chart">
                 <HorizontalBar
                     className="chart-bar"
                     data={this.state.chartData}
@@ -103,6 +127,7 @@ const mapStateToProps = state => ({
     genders: state.chart.genders,
     highestNotes: state.chart.highestNotes,
     lowestNotes: state.chart.lowestNotes,
+    newTrigger: state.chart.newTrigger
 });
 
-export default connect(mapStateToProps, {getNames, getGenders, getHighestNotes, getLowestNotes})(ChartManager);
+export default connect(mapStateToProps, {getNames, getGenders, getHighestNotes, getLowestNotes, addToChart, postChange, resetTrigger})(ChartManager);

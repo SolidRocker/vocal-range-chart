@@ -1,4 +1,4 @@
-import {ADD_VOCALIST} from '../actions/types';
+import {ADD_VOCALIST} from '../../redux/types';
     
 const vocalistState = {
     vocalist: {}

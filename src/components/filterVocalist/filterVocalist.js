@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Dropdown from 'react-dropdown'
 import {IoIosArrowDown, IoIosArrowUp} from 'react-icons/io';
 import {populateNames} from './filterVocalistActions.js'
+import {addToChart} from '../chart/chartActions.js'
 import './filterVocalist.css'
 
 class FilterVocalist extends Component {
@@ -18,7 +19,8 @@ class FilterVocalist extends Component {
     }
 
     onSelectVocalist = (option) => {
-        this.setState({vocalistName: option.label});
+        this.props.addToChart(option.label);
+        this.setState({vocalistName: option.label})
     }
 
     onSelectFilter = (option) => {
@@ -85,4 +87,4 @@ const mapStateToProps = state => ({
     nameList: state.filterVocalist.names
 });
 
-export default connect(mapStateToProps, {populateNames})(FilterVocalist);
+export default connect(mapStateToProps, {populateNames, addToChart})(FilterVocalist);
