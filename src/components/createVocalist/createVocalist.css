@@ -1,0 +1,121 @@
+.vocalist-section {
+    background-color: rgb(236, 236, 236);
+    margin-top: 2vh;
+    width: 80%;
+}
+
+.vocalist-header {
+    display: block;
+    font-weight: bold;
+    min-height: 20px;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    padding-top: 1%;
+    text-align: center;
+}
+
+.vocalist-name {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color: #404040;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-left: 1.8%;
+    min-width: 300px;
+    padding-left: 1%;
+    padding-top: 0.7%;
+    padding-bottom: 0.7%;
+    width: 60%;
+}
+
+.vocalist-gender {
+    background-color: #FCFCFC;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 0.5%;
+    min-width: 80px;
+    padding-left: 1%;
+    padding-top: 1%;
+    width: 10%;
+}
+
+.vocalist-note {
+    background-color: #FCFCFC;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 0.5%;
+    min-width: 80px;
+    padding-left: 1%;
+    padding-top: 1%;
+    width: 10%;
+}
+
+.vocalist-button {
+    background-color: #F4511E;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 1% 0% 1% 45%;
+    min-width: 100px;
+    min-height: 30px;
+    padding: 0.5% 4% 0.5% 4%;
+    text-align: center;
+}
+
+.Dropdown-class-type, .Dropdown-class-disabled {
+    background-color: #FCFCFC;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Dropdown-class-disabled {
+    background-color: #DDDDDD;
+    border-radius: 4px;
+    color: #808080;
+}
+
+.Dropdown-menu-type {
+    background-color: white;
+    border-radius: 4px;
+    color: #404040;
+    cursor: pointer;
+    min-width: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    text-align: left;
+    width: 10%;
+}
+
+.Dropdown-control {
+    color: #404040;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(1px + 2vmin);
+}
+
+.Dropdown-option {
+    box-sizing: border-box;
+    color: rgba(51, 51, 51, 0.8);
+    cursor: pointer;
+    display: block;
+    padding: 8px 10px;
+  }
+
+.Dropdown-option:hover {
+    background-color: #eeeeee;
+    color: #333;
+  }
+
+  .Dropdown-icon {
+    position: relative;
+    float: right;
+    padding-right: 12px;
+    bottom: 10px;
+}
+

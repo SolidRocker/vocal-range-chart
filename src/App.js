@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import ChartManager from './components/chart/chart';
+import CreateVocalist from './components/createVocalist/createVocalist';
+import FilterVocalist from './components/filterVocalist/filterVocalist';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <div className="app">
+          <header className="app-header">
+            <h2>
+              VOCAL RANGE CHART
+            </h2>
+            <div className="app-subtitle">
+              Charting your favorite vocalists by their vocal range!
+            </div>
+          </header>
+        </div>
+
+        <div className="app-body">
+          <ChartManager/>
+          <FilterVocalist/>
+        </div>
+      </Provider>
     );
   }
 }
-
 export default App;

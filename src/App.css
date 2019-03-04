@@ -8,15 +8,31 @@
   pointer-events: none;
 }
 
-.App-header {
+.app-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 13vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin);
+  line-height: 1vh;
   color: white;
+}
+
+.app-subtitle {
+  line-height: 0vh;
+  font-size: 2vmin;
+  padding-bottom: 4vh;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1vh;
+  margin-top: 3%;
 }
 
 .App-link {
