@@ -16,7 +16,7 @@
     flex-basis: 17%;
     flex-grow: 2;
     flex-shrink: 2;
-    font-size: calc(1px + 1.8vmin);
+    font-size: calc(8px + 1.1vmin);
     font-weight: bold;
     line-height: 3vh;
     padding: 10px;
@@ -35,7 +35,8 @@
     flex-basis: 80%;
     flex-grow: 4;
     flex-shrink: 4;
-    font-size: calc(14px + 2vmin);
+    font-size: calc(2px + 2vmin);
+    padding-left: 15px;
 }
 
 .sort-vocalist-addvox-dropdown {
@@ -46,21 +47,8 @@
     order: 5;
 }
 
-.sort-vocalist-addvox-button, .sort-empty {
-    flex-basis: 1%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    width: 17%;
-}
-
 .sort-vocalist-addvox-button {
     order: 3;
-}
-
-.explain-text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: calc(1px + 1.5vmin);
-    padding: 1%;
 }
 
 .sort-vocalist-list {
@@ -107,7 +95,7 @@
     color: #404040;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: calc(1px + 1.5vmin);
+    font-size: calc(9px + 0.8vmin);
 }
 
 .Dropdown-option {
@@ -115,7 +103,7 @@
     color: rgba(51, 51, 51, 0.8);
     cursor: pointer;
     display: block;
-    font-size: calc(1px + 1.5vmin);
+    font-size: calc(9px + 0.8vmin);
     padding: 10px 10px;
   }
 
@@ -128,5 +116,5 @@
     position: relative;
     float: right;
     padding-right: 10px;
-    bottom: calc(1px + 1.5vmin);
+    bottom: calc(1px + 1vmin);
 }

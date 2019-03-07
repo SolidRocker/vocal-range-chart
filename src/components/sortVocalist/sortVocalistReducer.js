@@ -7,7 +7,6 @@ const sortVocalist = {
 export default function(state = sortVocalist, action) {
     switch(action.type) {
         case POPULATE_NAMES:
-        console.log(action.payload);
             return {
                 ...state,
                 names: action.payload,

@@ -142,7 +142,22 @@ class ChartManager extends Component {
                             position: 'bottom'
                         },
                         tooltips: {
-                            mode: 'y',
+                            displayColors: false,
+                            backgroundColor: "black",
+                            enabled: true,
+                            mode: "single",
+                            cornerRadius: 4,
+                            callbacks: {
+                              title: (tooltipItems) => {
+                                return tooltipItems[0].yLabel;
+                              },
+                              label: (tooltipItems, data) => {
+                                  return "Range: "
+                                    + this.toNote(data.datasets[1].data[0])
+                                    + " to "
+                                    + this.toNote(data.datasets[0].data[0]);
+                              }
+                            }
                         },
                         scales: {
                             xAxes: [{

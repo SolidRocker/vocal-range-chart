@@ -6,7 +6,6 @@ import {populateNames} from './sortVocalistActions'
 import {addToChart, postChange} from '../chart/chartActions.js'
 import {compareName, compareWidestRange, compareHighestNote, compareLowestNote} from './sortVocalistContainers';
 import './sortVocalist.css'
-import { join } from 'path';
 
 const sortBy = [
     "A-Z",
