@@ -8,6 +8,7 @@ export const addVocalist = (newVocalist) => dispatch => {
         name: newVocalist.name,
         isMale: newVocalist.isMale,
         highestNote: newVocalist.highestNote,
-        lowestNote: newVocalist.lowestNote
+        lowestNote: newVocalist.lowestNote,
+        range: newVocalist.highestNote - newVocalist.lowestNote
     })
 }

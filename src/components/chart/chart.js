@@ -2,7 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {HorizontalBar} from 'react-chartjs-2';
 
-import {getNames, getGenders, getHighestNotes, getLowestNotes, addToChart, postChange, resetTrigger} from './chartActions';
+import {
+    addToChart,
+    postChange,
+    resetTrigger,
+    removeVocalist,
+    resetRemoveTrigger,
+    addRange
+} from './chartActions';
+
 import {noteArray} from './noteArray';
 import './chart.css'
 
@@ -13,14 +21,19 @@ class ChartManager extends Component {
         this.state = {
             C4ID: 40,           // Position of C4 in noteArray
             chartData: {},
-            triggerUpdate: false
+            triggerUpdate: false,
+            triggerRemove: false,
         }
         this.toNote = this.toNote.bind(this);
         this.setChartData = this.setChartData.bind(this);
     }
 
     componentDidUpdate() {
-        console.log(this.props.newTrigger);
+
+        // Add Bar Handler
+        // Listen for changes in this.props.newTrigger has changed.
+        // If there is, update this.state.triggerUpdate, which then sets chart data.
+        // Also stops infinite loop via unsetting this.state.triggerUpdate.
         if(this.state.triggerUpdate) {
             this.setState({triggerUpdate: false}, function() {
              this.setChartData();
@@ -29,6 +42,18 @@ class ChartManager extends Component {
         else if(this.props.newTrigger) {
             this.setState({triggerUpdate: true}, function() {
                 this.props.resetTrigger();
+            });
+        }
+
+        // Remove Bar Handler. Same logic as adding.
+        if(this.state.triggerRemove) {
+            this.setState({triggerRemove: false}, function() {
+             this.setChartData();
+            })
+        }
+        else if(this.props.removeTrigger) {
+            this.setState({triggerRemove: true}, function() {
+                this.props.resetRemoveTrigger();
             });
         }
     }
@@ -45,50 +70,67 @@ class ChartManager extends Component {
         }
     }
 
+    getVocalistData(dataType) {
+        let output = [];
+        for(var i = 0; i < this.props.vocalists.length; ++i) {
+
+            if(dataType === "name") {
+                output.push(this.props.vocalists[i].name);
+            }
+            else if(dataType === "gender") {
+                output.push(this.props.vocalists[i].gender);
+            }
+            else if(dataType === "highestNote") {
+                output.push(this.props.vocalists[i].highestNote);
+            }
+            else if(dataType === "lowestNote") {
+                output.push(this.props.vocalists[i].lowestNote);
+            }
+        }
+        return output;
+    }
+
     // Sets the chart data from the 4 arrays created
     setChartData = () => {
-        console.log("SET");
         this.setState({
             chartData: {
-                labels: ["hi", "ee"],
+                labels: this.getVocalistData("name"),
                 datasets: [
                 {
                     label: 'Highest Note',
-                    data: [6, 8],
-                    backgroundColor: ["#FF0000", "#00FF00"]
+                    data: this.getVocalistData("highestNote"),
+                    backgroundColor: this.getVocalistData("gender")
                 },
                 {
                     label: 'Lowest Note',
-                    data: [-6, -3],
-                    backgroundColor: ["#FF0000",  "#00FF00"]
+                    data: this.getVocalistData("lowestNote"),
+                    backgroundColor: this.getVocalistData("gender")
                 }]
-
-                /*
-                chartData: {
-                labels: this.props.names,
-                datasets: [
-                {
-                    label: 'Highest Note',
-                    data: this.props.highestNotes,
-                    backgroundColor: this.props.genders
-                },
-                {
-                    label: 'Lowest Note',
-                    data: this.props.lowestNotes,
-                    backgroundColor: this.props.genders
-                }]
-                */
             }
         })
     }
 
-    render() {
+    clickElem = (elems) => {    
+        if(elems[0]) {
+            this.props.removeVocalist(elems[0]._index);
+        }
+    }
 
+    displayInstructions() {
+        let disp = null;
+        if(this.props.currentEntryCount > 0) {
+            return "Click on the vocalist's bar to remove them from chart";
+        }
+        return disp;
+    }
+
+    render() {
         return (
-           <div className="chart">
+            <div className="chart">
                 <HorizontalBar
                     className="chart-bar"
                     data={this.state.chartData}
+                    onElementsClick={elems => {this.clickElem(elems)}}
                     options={{
                         title: {
                             display: true,
@@ -117,17 +159,25 @@ class ChartManager extends Component {
                         }
                     }}
                 />
+                <div className="explain-text">
+                    {this.displayInstructions()}
+                </div>
             </div>
         );
       }
 }
 
 const mapStateToProps = state => ({
-    names: state.chart.names,
-    genders: state.chart.genders,
-    highestNotes: state.chart.highestNotes,
-    lowestNotes: state.chart.lowestNotes,
-    newTrigger: state.chart.newTrigger
+    vocalists: state.chart.vocalists,
+    newTrigger: state.chart.newTrigger,
+    removeTrigger: state.chart.removeTrigger,
+    currentEntryCount: state.chart.currentEntryCount
 });
 
-export default connect(mapStateToProps, {getNames, getGenders, getHighestNotes, getLowestNotes, addToChart, postChange, resetTrigger})(ChartManager);
+export default connect(mapStateToProps, {
+    addToChart,
+    postChange,
+    resetTrigger,
+    removeVocalist,
+    resetRemoveTrigger, addRange}
+)(ChartManager);

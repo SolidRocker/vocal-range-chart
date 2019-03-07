@@ -1,56 +1,48 @@
-import { GET_NAMES, GET_GENDERS, GET_HIGHEST_NOTES, GET_LOWEST_NOTES, ADD_TO_CHART, POST_CHANGE } from '../../redux/types';
+import {
+    ADD_TO_CHART,
+    POST_CHANGE,
+    REMOVE_FROM_CHART,
+    POST_REMOVE_CHANGE } from '../../redux/types';
     
 const chartState = {
-    names: [],
-    genders: [],
-    highestNotes: [],
-    lowestNotes: [],
-    newTrigger: false
+    vocalists: [],
+    newTrigger: false,
+    removeTrigger: false,
+    currentEntryCount: 0
 }
 
 export default function(state = chartState, action) {
     switch(action.type) {
-        case GET_NAMES:
-            return {
-                ...state,
-                names: action.payload,
-        }
-        case GET_GENDERS:
-            return {
-                ...state,
-                genders: action.payload,
-        }
-        case GET_HIGHEST_NOTES:
-            return {
-                ...state,
-                highestNotes: action.payload,
-            }
-        case GET_LOWEST_NOTES:
-            return {
-                ...state,
-                lowestNotes: action.payload,
-            }
         case ADD_TO_CHART:
-        console.log("R: " + action.payload_gender);
             return {
                 ...state,
-                names: action.payload_name,
-                genders: action.payload_gender,
-                highestNotes: action.payload_highestNote,
-                lowestNotes: action.payload_lowestNote,
-                newTrigger: action.payload_trigger
-                /*names: [...state.names, action.payload_name],
-                genders: [...state.genders, action.payload_gender],
-                highestNotes: [...state.highestNotes, action.payload_highestNote],
-                lowestNotes: [...state.lowestNotes, action.payload_lowestNote]*/
+                newTrigger: action.payload_trigger,
+                vocalists: [...state.vocalists, action.payload],
+                currentEntryCount: state.currentEntryCount + 1
             }
+         case REMOVE_FROM_CHART:
+            return {
+                removeTrigger: action.payload_trigger,
+                vocalists: [
+                    ...state.vocalists.slice(0, action.payload_id),
+                    ...state.vocalists.slice(action.payload_id+1)
+                ],
+                currentEntryCount: state.currentEntryCount - 1
+            }
+
         case POST_CHANGE:
             return {
                 ...state,
                 newTrigger: action.payload_trigger
         }
+
+        case POST_REMOVE_CHANGE:
+            return {
+                ...state,
+                removeTrigger: action.payload_trigger
+            }
         default:
-            return chartState;
+            return state;
     }
 }
 

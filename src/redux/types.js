@@ -1,8 +1,6 @@
 export const ADD_VOCALIST = 'ADD_VOCALIST';
-export const GET_NAMES = 'GET_NAMES';
-export const GET_GENDERS = 'GET_GENDERS';
-export const GET_HIGHEST_NOTES = 'GET_HIGHEST_NOTES';
-export const GET_LOWEST_NOTES = 'GET_LOWEST_NOTES';
 export const ADD_TO_CHART = 'ADD_TO_CHART';
+export const REMOVE_FROM_CHART = 'REMOVE_FROM_CHART';
 export const POST_CHANGE = 'POST_CHANGE';
 export const POPULATE_NAMES = 'POPULATE_NAMES';
+export const POST_REMOVE_CHANGE = 'POST_REMOVE_CHANGE';

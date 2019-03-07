@@ -12,7 +12,7 @@ export default function(state = vocalistState, action) {
             vocalist: action.payload,
         }
         default:
-            return vocalistState;
+            return state;
     }
 }
 

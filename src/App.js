@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import ChartManager from './components/chart/chart';
 import CreateVocalist from './components/createVocalist/createVocalist';
-import FilterVocalist from './components/filterVocalist/filterVocalist';
+import SortVocalist from './components/sortVocalist/sortVocalist';
+import ImageMarquee from './components/imageMarquee/imageMarquee';
 import './App.css';
 
 class App extends Component {
@@ -22,8 +23,9 @@ class App extends Component {
         </div>
 
         <div className="app-body">
+          <ImageMarquee/>
           <ChartManager/>
-          <FilterVocalist/>
+          <SortVocalist/>
         </div>
       </Provider>
     );
