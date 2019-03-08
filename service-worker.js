@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/SolidRocker/vocal-range-chart/precache-manifest.34c3fc797cf36470075d81235697539a.js"
+  "/vocal-range-chart/precache-manifest.f13c29cd2d21429c25aa706e8cd3f66a.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/SolidRocker/vocal-range-chart/index.html", {
+workbox.routing.registerNavigationRoute("/vocal-range-chart/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
