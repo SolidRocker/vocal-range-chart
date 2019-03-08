@@ -1,6 +1,7 @@
 You can view this project here: https://solidrocker.github.io/vocal-range-chart/
 
-A full write up of the project's plan, execution, and post-mortem: https://medium.com/@tylerkam/remaking-a-vocalist-range-chart-using-react-46073004b463
+A full write up of the project's plan, execution, and post-mortem:
+https://medium.com/@tylerkam/remaking-a-vocalist-range-chart-using-react-46073004b463
 
 ## Introduction
 
