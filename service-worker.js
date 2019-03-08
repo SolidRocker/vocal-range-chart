@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/vocal-range-chart/precache-manifest.bef836bc6895d3c1429c5978ebdbf22c.js"
+  "/vocal-range-chart/precache-manifest.e5e06e4f7eb5ab171ed47931d616c36a.js"
 );
 
 workbox.clientsClaim();
