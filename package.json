@@ -2,12 +2,14 @@
   "name": "vocal-range-chart",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/SolidRocker/vocal-range-chart",
   "dependencies": {
     "@progress/kendo-drawing": "^1.5.8",
     "@progress/kendo-react-charts": "^2.6.1",
     "@progress/kendo-react-intl": "^2.6.1",
     "chart.js": "^2.7.3",
     "firebase": "^5.8.3",
+    "gh-pages": "^2.0.1",
     "hammerjs": "^2.0.8",
     "react": "^16.8.2",
     "react-chartjs": "^1.2.0",
@@ -22,6 +24,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
