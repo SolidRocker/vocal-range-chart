@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/vocal-range-chart/static/js/runtime~main.ffabf211.js"
   },
   {
-    "revision": "dcb5234ec67fff15a3f4",
-    "url": "/vocal-range-chart/static/js/main.dcb5234e.chunk.js"
+    "revision": "dc447630ccadd90543ea",
+    "url": "/vocal-range-chart/static/js/main.dc447630.chunk.js"
   },
   {
     "revision": "f30b6da194cfa7f9fa66",
     "url": "/vocal-range-chart/static/js/2.f30b6da1.chunk.js"
   },
   {
-    "revision": "dcb5234ec67fff15a3f4",
-    "url": "/vocal-range-chart/static/css/main.c901ca6b.chunk.css"
+    "revision": "dc447630ccadd90543ea",
+    "url": "/vocal-range-chart/static/css/main.a6b57133.chunk.css"
   },
   {
-    "revision": "fb2f9def701c62bb8c90a8003541c1e7",
+    "revision": "27bc3e1b91d5f3bda318fed3702e6981",
     "url": "/vocal-range-chart/index.html"
   }
 ];
